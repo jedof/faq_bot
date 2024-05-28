@@ -2,6 +2,9 @@ from aiogram import types, Router, F
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import StatesGroup, State
+from init_bot import bot
+from config import settings
+
 
 router = Router()
 
@@ -71,6 +74,7 @@ async def answers(message: types.Message, state: FSMContext):
             await message.answer(questions[len(answers_list)])
         else:
             await message.answer(format_answers(answers['fullname'], answers_list), parse_mode="html", reply_markup=back_keyboard)
+            await bot.send_message(text=format_answers(answers['fullname'], answers_list), parse_mode="html", chat_id=settings.ADMIN_USER)
             await state.clear()
 
 

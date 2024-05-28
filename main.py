@@ -1,22 +1,13 @@
 import logging
 import asyncio
-import os
+from init_bot import bot
 
 
-from aiogram import Bot, Dispatcher
+from aiogram import Dispatcher
 from hendlers import router as hendlers_router
-from dotenv import load_dotenv
-
-load_dotenv()
-
-TOKEN = os.getenv("TG_TOKEN")
 
 
 logging.basicConfig(level=logging.INFO)
-
-
-bot = Bot(token=TOKEN)
-
     
 
 async def main():

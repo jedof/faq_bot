@@ -11,3 +11,5 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 ADD ./main.py .
 ADD ./hendlers.py .
 ADD ./.env .
+ADD ./init_bot.py .
+ADD ./config.py .
