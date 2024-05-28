@@ -74,7 +74,8 @@ async def answers(message: types.Message, state: FSMContext):
             await message.answer(questions[len(answers_list)])
         else:
             await message.answer(format_answers(answers['fullname'], answers_list), parse_mode="html", reply_markup=back_keyboard)
-            await bot.send_message(text=format_answers(answers['fullname'], answers_list), parse_mode="html", chat_id=settings.ADMIN_USER)
+            for user_id in settings.ADMIN_USERS.get_secret_value().split(","):
+                await bot.send_message(text=format_answers(answers['fullname'], answers_list), parse_mode="html", chat_id=user_id)
             await state.clear()
 
 
